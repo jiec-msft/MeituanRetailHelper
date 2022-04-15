@@ -33,6 +33,7 @@ public class MeituanGrabHandler implements GrabService.IGrabHandler {
     public static final String TEXT_CHART = "购物车";
     public static final String TEXT_ORDER_BTN = "结算";
     public static final String TEXT_ORDER_OPEN_BEGIN = "当前不在可下";
+    public static final String TEXT_NO_AVAILABLE_DELIVER_TIME = "订单已约满";
 
     public static final String TEXT_PLACE_ORDER = "提交订单";
     public static final String TEXT_BACK_HOME = "返回购物车";
@@ -192,6 +193,9 @@ public class MeituanGrabHandler implements GrabService.IGrabHandler {
 
         //3.下单
         clickPay(rootNode, service);
+        
+        //4. 额外弹窗
+        clickDialogIfExist(rootNode, service);
     }
 
     void clickPay(AccessibilityNodeInfo rootNode, AccessibilityService service) {
